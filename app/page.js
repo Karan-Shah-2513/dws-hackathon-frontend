@@ -18,6 +18,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ResponsiveBar } from "@nivo/bar";
 import { ResponsiveLine } from "@nivo/line";
+import SearchWidget from "@/widgets/gen-ai-search/SearchWidget";
 
 export default function Component() {
   return (
@@ -26,9 +27,10 @@ export default function Component() {
         <div className="container mx-auto flex items-center justify-between">
           <Link href="#" className="flex items-center gap-2" prefetch={false}>
             <BarChartIcon className="h-6 w-6 text-primary" />
-            <span className="text-lg font-bold">Asset Manager</span>
+            <span className="text-lg font-bold">Beta Investors</span>
           </Link>
           <nav className="hidden md:flex items-center gap-4">
+            <SearchWidget />
             <Link
               href="#"
               className="text-sm font-medium hover:underline"
@@ -283,7 +285,7 @@ export default function Component() {
       <footer className="py-6 px-4 md:px-6 border-t">
         <div className="container mx-auto flex items-center justify-between">
           <p className="text-sm text-muted-foreground">
-            &copy; 2024 Asset Manager. All rights reserved.
+            &copy; 2024 Beta Investors. All rights reserved.
           </p>
           <nav className="hidden md:flex items-center gap-4">
             <Link
