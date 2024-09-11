@@ -9,7 +9,9 @@ import {
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import LearningSearchWidget from "@/widgets/gen-ai-search/LearningSearchWidget";
 import { BookOpen, Video, PieChart, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
 export default function Learn() {
   return (
@@ -18,18 +20,39 @@ export default function Learn() {
         <CardTitle className="text-2xl font-bold">
           Financial Learning Hub
         </CardTitle>
+        <LearningSearchWidget />
         <CardDescription>
           Boost your financial knowledge with our curated content
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="basics" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
+            <TabsTrigger value="recommendations">Recommendations</TabsTrigger>
             <TabsTrigger value="basics">Basics</TabsTrigger>
             <TabsTrigger value="investing">Investing</TabsTrigger>
             <TabsTrigger value="crypto">Crypto</TabsTrigger>
             <TabsTrigger value="personal">Personal Finance</TabsTrigger>
           </TabsList>
+          <TabsContent value="recommendations">
+            <ScrollArea className="h-[300px] w-full rounded-md border p-4">
+              <LearningItem
+                icon={<BookOpen className="h-6 w-6" />}
+                title="ESG Fundamentals"
+                description="Learn the fundamentals of environmental, social, and governance."
+              />
+              <LearningItem
+                icon={<Video className="h-6 w-6" />}
+                title="Budgeting 101"
+                description="Master the art of budgeting with our video tutorial."
+              />
+              <LearningItem
+                icon={<PieChart className="h-6 w-6" />}
+                title="Saving Strategies"
+                description="Discover effective ways to save money and build your financial cushion."
+              />
+            </ScrollArea>
+          </TabsContent>
           <TabsContent value="basics">
             <ScrollArea className="h-[300px] w-full rounded-md border p-4">
               <LearningItem
@@ -102,12 +125,18 @@ export default function Learn() {
 
 function LearningItem({ icon, title, description }) {
   return (
-    <div className="flex items-start space-x-4 mb-4">
+    // <div className="flex items-start space-x-4 mb-4">
+    <Link
+      href={"/learn/" + title}
+      prefetch={false}
+      className="flex items-start space-x-4 mb-4"
+    >
       <div className="bg-primary/10 p-2 rounded-full">{icon}</div>
       <div>
         <h3 className="font-semibold">{title}</h3>
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>
-    </div>
+    </Link>
+    // </div>
   );
 }

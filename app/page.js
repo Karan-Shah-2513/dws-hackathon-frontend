@@ -89,7 +89,7 @@ export default function Component() {
               Transactions
             </Link>
             <Link
-              href="#"
+              href="reports"
               className="text-sm font-medium hover:underline"
               prefetch={false}
             >
