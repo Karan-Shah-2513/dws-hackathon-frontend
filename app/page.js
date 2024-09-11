@@ -19,6 +19,15 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ResponsiveBar } from "@nivo/bar";
 import { ResponsiveLine } from "@nivo/line";
 import SearchWidget from "@/widgets/gen-ai-search/SearchWidget";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 
 export default function Component() {
   return (
@@ -95,7 +104,7 @@ export default function Component() {
             </Link>
             <div className="border-t pt-4">
               <Link
-                href="#"
+                href="learn"
                 className="text-sm font-medium hover:underline"
                 prefetch={false}
               >
@@ -114,6 +123,23 @@ export default function Component() {
           </nav>
         </div>
         <main className="flex-1 py-12 px-4 md:px-6">
+          <section>
+            {/* Free Trial Section */}
+            <Card className="mb-6">
+              <CardHeader>
+                <CardTitle>Free Trial Period</CardTitle>
+                <CardDescription>
+                  You have 14 days left in your free trial
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Progress value={50} className="w-full" />
+              </CardContent>
+              <CardFooter>
+                <Button>Upgrade to Premium</Button>
+              </CardFooter>
+            </Card>
+          </section>
           <div className="container mx-auto grid md:grid-cols-2 gap-8">
             <section>
               <h1 className="text-3xl font-bold mb-4">
